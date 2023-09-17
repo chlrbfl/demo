@@ -1,0 +1,92 @@
+server:
+  port: 8080
+
+debug: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/Pure_Ticket?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: 000427
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      datebase: mariadb
+      database-platform: org.hibernate.dialect.MariaDB103Dialects
+      ddl-auto: create
+      properties:
+        hibernate:
+          show_sql: true
+          format_sql: true
+          default_batch_fetch_size: 100
+          use_sql_comments: true
+        # open-in-view: false
+
+sql.init.mode: always
+
+data:
+  web:
+    pageable:
+      default-page-size: 10
+    rest:
+      base-path:  /api
+      detection-strategy: annotated
+
+  #OverLoaded POST ??
+  mvc:
+    hidden-mathod:
+      filter:
+        enabled: true
+
+  #Bean Overriding? ???
+  main:
+    allow-bean-definition-overriding: true
+
+  thymeleaf:
+    prefix: classpath:templates/
+    check-template-location: true
+    suffix: .html
+    mode: HTML
+    cache: false
+
+  #?? ?? ??
+  sql:
+    init:
+      encoding: utf-8
+
+  #?? ??
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: kelly07192@gmail.com
+    password: chlqhrud00
+    protocol: smtps
+    default-encoding: UTF-8
+    properties:
+      mail:
+        auth: true
+        starttls:
+          enable: true
+          required: true
+
+  logging:
+    level:
+      root: INFO
+      SQL: DEBUG
+      org.springframework.web.servlet: debug
+      org.hibernate.sql: trace
+      org.hibernate.type: trace
+
+  #session
+  #??? 30???, ??? 1?
+  server:
+    servlet:
+      session:
+        timeout: 10m
