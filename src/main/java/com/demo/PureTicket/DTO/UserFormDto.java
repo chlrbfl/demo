@@ -1,4 +1,4 @@
-package com.demo.PureTicket.dto;
+package com.demo.PureTicket.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,5 +17,8 @@ public class UserFormDto {
     private String user_id;
 
     private String user_birth;
+
+    private String user_phone;
+
 
 }

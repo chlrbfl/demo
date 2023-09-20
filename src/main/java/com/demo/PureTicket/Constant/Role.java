@@ -1,4 +1,4 @@
-package com.demo.PureTicket.constant;
+package com.demo.PureTicket.Constant;
 
 public enum Role {
 

@@ -1,7 +1,7 @@
 package com.demo.PureTicket.Entity;
 
-import com.demo.PureTicket.constant.Role;
-import com.demo.PureTicket.dto.UserFormDto;
+import com.demo.PureTicket.Constant.Role;
+import com.demo.PureTicket.DTO.UserFormDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

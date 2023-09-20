@@ -1,7 +1,7 @@
-package com.demo.PureTicket.service;
+package com.demo.PureTicket.Service;
 
 import com.demo.PureTicket.Entity.User;
-import com.demo.PureTicket.repository.UserRepository;
+import com.demo.PureTicket.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,9 +14,7 @@ import javax.transaction.Transactional;
 @Transactional
 @RequiredArgsConstructor
 
-public class UserService {
-
-public class UserService implements UserDetailsService{
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
@@ -32,22 +30,21 @@ public class UserService implements UserDetailsService{
         }
     }
 
-        @Override
-        public UserDetails loadUserByUsername(String user_email) throws
-                UsernameNotFoundException{
-            User user = userRepository.findByEmail(user_email);
+    @Override
+    public UserDetails loadUserByUsername(String user_email) throws
+            UsernameNotFoundException{
+        User user = userRepository.findByEmail(user_email);
 
-            if(user == null) {
-                throw new UsernameNotFoundException(user_email);
-            }
-            return User.builder()
-                    .user_name(user.getUser_email())
-                    .user_pass(user.getUser_pass())
-                    .roles(user.getRole().toString())
-                    .build();
+        if(user == null) {
+            throw new UsernameNotFoundException(user_email);
         }
 
-}
+      return User.builder()
+                .user_name(user.getUser_email())
+                .user_pass(user.getUser_pass())
+                .roles(user.getRole().toString())
+                .build();
+    }
 
 
 }
